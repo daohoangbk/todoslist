@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <FormAddItem></FormAddItem>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import FormAddItem from './components/FormAddItem'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    FormAddItem
   }
 }
 </script>
