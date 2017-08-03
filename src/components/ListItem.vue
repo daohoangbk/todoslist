@@ -1,31 +1,29 @@
 <template>
 <div>
-  <ol>
+  <ul>
     <li v-for="(item, index) in listItem">
       <span
-        :class="{text-decoration: {item.done? line-through : none}}"
-        @click="changeDoneItem(index)">
+        v-bind:class="item.done ? 'done' : ''"
+        @click="">
         {{item.text}}
       </span>
     </li>
-  </ol>
+  </ul>
 </div>
 </template>
 
 <script>
-import {
-  changeDoneItem,
-  removeItem
-} from '../vuex/actions'
-export default {
-  vuex: {
-    getters: {
-      listItem: (state) => state.todoslist
+  export default {
+    data: function () {
+      return {listItem: this.$store.getters.todosList}
     },
-    action: {
-      changeDoneItem,
-      removeItem
+    methods: {
+
     }
   }
-}
 </script>
+<style>
+  .done {
+    text-decoration: line-through;
+  }
+</style>

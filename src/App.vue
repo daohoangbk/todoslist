@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <FormAddItem></FormAddItem>
+    <ListItem></ListItem>
   </div>
 </template>
 
 <script>
 import FormAddItem from './components/FormAddItem'
+import ListItem from './components/ListItem'
 
 export default {
   name: 'app',
   components: {
-    FormAddItem
+    FormAddItem,
+    ListItem
   }
 }
 </script>

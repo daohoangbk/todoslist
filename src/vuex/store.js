@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 Vue.use(Vuex)
 
 const state = {
-  todoslist: [],
+  todosList: [{text: 'first', done: false}, {text: 'second', done: true}],
   view: 'all',
-  inputText: 'begin'
+  inputText: 'beginfd'
 }
 
 const mutations = {
   ADD_ITEM (state) {
-    state.todoslist.push({
-      text: state.inputText,
+    let temp = state.inputText
+    state.inputText = ''
+    state.todosList.push({
+      text: temp,
       done: false
     })
-    state.inputText = ''
   },
   CHANGE_TEXT (state, text) {
     state.inputText = text
@@ -31,7 +31,30 @@ const mutations = {
   }
 }
 
+const actions = {
+  addItem ({commit}) {
+    commit('ADD_ITEM')
+  },
+  changeText ({commit}, text) {
+    commit('CHANGE_TEXT', text)
+  },
+  changeDoneItem ({commit}) {
+    commit('CHANGE_DONE_ITEM')
+  },
+  removeItem ({commit}) {
+    commit('REMOVE_ITEM')
+  },
+  changeView ({commit}) {
+    commit('CHANGE_VIEW')
+  }
+}
+
 export default new Vuex.Store({
   state,
-  mutations
+  mutations,
+  actions,
+  getters: {
+    inputText: (state) => state.inputText,
+    todosList: (state) => state.todosList
+  }
 })

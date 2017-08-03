@@ -1,20 +1,24 @@
 <template>
   <div>
-    <input v-bind:inputText="inputText" @input="changeText()" />
-    <button @click="addItem()">Add</button>
+    <input :value="inputText" @input="changeText" />
+    <button @click="addItem">Add</button>
   </div>
 </template>
 
 <script>
-  import { addItem, changeText } from '../vuex/actions.js'
+  // import { changeText } from '../vuex/actions.js'
   export default {
-    vuex: {
-      getters: {
-        inputText: '(state) => state.inputText'
+    data: function () {
+      return {inputText: this.$store.getters.inputText}
+    },
+    methods: {
+      addItem: function () {
+        this.$store.dispatch('addItem')
       },
-      actions: {
-        addItem,
-        changeText
+      changeText: function (e) {
+        this.$store.dispatch('changeText', {
+          text: e.target.value
+        })
       }
     }
   }
