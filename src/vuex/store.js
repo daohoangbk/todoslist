@@ -12,23 +12,19 @@ const mutations = {
   ADD_ITEM (state) {
     let temp = state.inputText
     state.inputText = ''
-    // Vue.set(state, 'inputText', '')
-    console.log('1')
     state.todosList.push({
       text: temp,
       done: false
     })
-    console.log('2')
   },
   CHANGE_TEXT (state, text) {
     state.inputText = text
   },
   CHANGE_DONE_ITEM (state, index) {
-    // console.log(index)
     state.todosList[index].done = !state.todosList[index].done
   },
   REMOVE_ITEM (state, index) {
-    state.todosList.split(index, 1)
+    state.todosList.splice(index, 1)
   },
   CHANGE_VIEW (state, view) {
     state.view = view
@@ -40,15 +36,13 @@ const actions = {
     commit('ADD_ITEM')
   },
   changeText ({commit}, {text}) {
-    console.log(text)
     commit('CHANGE_TEXT', text)
   },
   changeDoneItem ({commit}, {index}) {
-    // console.log(index)
     commit('CHANGE_DONE_ITEM', index)
   },
-  removeItem ({commit}) {
-    commit('REMOVE_ITEM')
+  removeItem ({commit}, {index}) {
+    commit('REMOVE_ITEM', index)
   },
   changeView ({commit}) {
     commit('CHANGE_VIEW')

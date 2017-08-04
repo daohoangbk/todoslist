@@ -7,6 +7,7 @@
         @click="changeDoneItem($event, index)">
         {{item.text}}
       </span>
+      <button @click="removeItem($event, index)"><i class="glyphicon glyphicon-remove"></i></button>
     </li>
   </ul>
 </div>
@@ -16,9 +17,6 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    // data: function () {
-    //   return {listItem: this.$store.getters.todosList}
-    // },
     computed: {
       ...mapGetters({listItem: 'todosList'})
     },
@@ -26,6 +24,12 @@
       changeDoneItem: function (event, index) {
         this.$store.dispatch('changeDoneItem', {
           index: index
+        })
+      },
+      removeItem: function (event, index) {
+        // console.log(index)
+        this.$store.dispatch('removeItem', {
+          index
         })
       }
     }
