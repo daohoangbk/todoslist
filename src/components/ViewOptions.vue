@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button @click="changeView($event, 'all')">All</button>
-    <button @click="changeView($event, 'done')">Done</button>
-    <button @click="changeView($event, 'uncompleted')">Uncompleted</button>
+    <button class="btn" @click="changeView($event, 'all')">All</button>
+    <button class="btn" @click="changeView($event, 'done')">Done</button>
+    <button class="btn" @click="changeView($event, 'uncompleted')">Uncompleted</button>
   </div>
 </template>
 

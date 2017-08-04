@@ -50,7 +50,8 @@ const actions = {
 }
 const getters = {
   inputText: (state) => state.inputText,
-  todosList: (state) => state.todosList
+  todosList: (state) => state.todosList,
+  view: (state) => state.view
 }
 
 export default new Vuex.Store({

@@ -1,7 +1,7 @@
 <template>
   <div>
     <input :value="inputText" @input="changeText"  placeholder="tada" />
-    <button @click="addItem">Add</button>
+    <button class="btn btn-primary btn-sm" @click="addItem">Add</button>
   </div>
 </template>
 
