@@ -44,8 +44,8 @@ const actions = {
   removeItem ({commit}, {index}) {
     commit('REMOVE_ITEM', index)
   },
-  changeView ({commit}) {
-    commit('CHANGE_VIEW')
+  changeView ({commit}, {view}) {
+    commit('CHANGE_VIEW', view)
   }
 }
 const getters = {

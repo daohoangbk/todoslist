@@ -1,24 +1,19 @@
 <template>
   <div>
-    <input :value="inputText" @input="changeText"  placeholder="tada" />
-    <button @click="addItem">Add</button>
+    <button @click="changeView($event, 'all')">All</button>
+    <button @click="changeView($event, 'done')">Done</button>
+    <button @click="changeView($event, 'uncompleted')">Uncompleted</button>
   </div>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  // import { mapActions } from 'vuex'
 
   export default {
-    computed: {
-      ...mapGetters(['inputText'])
-    },
     methods: {
-      ...mapActions([
-        'addItem'
-      ]),
-      changeText: function (e) {
-        this.$store.dispatch('changeText', {
-          text: e.target.value
+      changeView: function (event, view) {
+        this.$store.dispatch('changeView', {
+          view
         })
       }
     }

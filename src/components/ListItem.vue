@@ -1,10 +1,11 @@
 <template>
 <div>
   <ul>
-    <li v-for="(item, index) in listItem">
+    <li v-for="(item, index) in todosList">
       <span
         v-bind:class="item.done ? 'done' : ''"
-        @click="changeDoneItem($event, index)">
+        @click="changeDoneItem($event, index)"
+        v-if="isShow($event, item.done)">
         {{item.text}}
       </span>
       <button @click="removeItem($event, index)"><i class="glyphicon glyphicon-remove"></i></button>
@@ -18,7 +19,11 @@
 
   export default {
     computed: {
-      ...mapGetters({listItem: 'todosList'})
+      ...mapGetters({
+        todosList: 'todosList',
+        view: 'view'
+      })
+
     },
     methods: {
       changeDoneItem: function (event, index) {
@@ -31,6 +36,19 @@
         this.$store.dispatch('removeItem', {
           index
         })
+      },
+      isShow: function (event, isTrue) {
+        switch (this.view) {
+          case 'all': return true
+          case 'done': {
+            if (isTrue) return true
+            else return false
+          }
+          case 'uncompleted': {
+            if (isTrue) return false
+            else return true
+          }
+        }
       }
     }
   }

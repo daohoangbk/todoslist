@@ -2,18 +2,21 @@
   <div id="app">
     <FormAddItem></FormAddItem>
     <ListItem></ListItem>
+    <ViewOptions></ViewOptions>
   </div>
 </template>
 
 <script>
 import FormAddItem from './components/FormAddItem'
 import ListItem from './components/ListItem'
+import ViewOptions from './components/ViewOptions'
 
 export default {
   name: 'app',
   components: {
     FormAddItem,
-    ListItem
+    ListItem,
+    ViewOptions
   }
 }
 </script>
