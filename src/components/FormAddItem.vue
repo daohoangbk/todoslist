@@ -1,18 +1,26 @@
 <template>
   <div>
-    <input :value="inputText" @input="changeText" />
-    <button @click="addItem">Add</button>
+    <form @submit="addItem">
+      <input :value="inputText" @input="changeText" placeholder="tada" />
+      <button type="submit ">Add</button>
+    </form>
   </div>
 </template>
 
 <script>
   // import { changeText } from '../vuex/actions.js'
+  import { mapGetters } from 'vuex'
+
   export default {
-    data: function () {
-      return {inputText: this.$store.getters.inputText}
+    // data: function () {
+    //   return {inputText: this.$store.getters.inputText}
+    // },
+    computed: {
+      ...mapGetters(['inputText'])
     },
     methods: {
-      addItem: function () {
+      addItem: function (e) {
+        e.preventDefault()
         this.$store.dispatch('addItem')
       },
       changeText: function (e) {
@@ -21,5 +29,8 @@
         })
       }
     }
+    // mounted: function () {
+    //   inputText = ''
+    // }
   }
 </script>
