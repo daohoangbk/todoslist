@@ -1,15 +1,22 @@
 <template>
 <div>
-  <ul>
-    <li v-for="(item, index) in todosList" v-if="isShow( item.done)">
-      <span
-        v-bind:class="item.done ? 'done' : ''"
-        @click="changeDoneItem($event, index)">
-        {{item.text}}
-      </span>
-      <button class="btn btn-danger btn-sm" @click="removeItem($event, index)"><i class="glyphicon glyphicon-remove"></i></button>
-    </li>
-  </ul>
+  <table class="table">
+    <thead>
+      <tr class="row">
+        <th class="col-md-8 col-xs-8">Task</th>
+        <th class="col-md-2 col-xs-2">Toggle done!</th>
+        <th class="col-md-2 col-xs-2">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(item, index) in todosList" v-if="isShow( item.done)" class="row">
+        <td v-bind:class="item.done ? 'done' : ''" class="col-md-8 col-xs-8">{{item.text}}</td>
+        <td v-if="!item.done" class="col-md-2 col-xs-2"><button class="btn btn-success btn-sm" @click="changeDoneItem($event, index)"><i class="glyphicon glyphicon-ok"></i></button></td>
+        <td v-else class="col-md-2 col-xs-2"><button class="btn btn-warning btn-sm" @click="changeDoneItem($event, index)"><i class="glyphicon glyphicon-remove"></i></button></td>
+        <td class="col-md-2 col-xs-2"><button class="btn btn-danger btn-sm" @click="removeItem($event, index)"><i class="glyphicon glyphicon-trash"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 </template>
 
@@ -56,8 +63,3 @@
     }
   }
 </script>
-<style>
-  .done {
-    text-decoration: line-through;
-  }
-</style>
