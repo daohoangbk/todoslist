@@ -1,17 +1,17 @@
 <template>
   <div class="row viewoptions">
-    <FormAddUser></FormAddUser>
+    
     <ListUser></ListUser>
   </div>
 </template>
 
 <script>
-  import FormAddUser from './components/FormAddUser'
-  import ListUser from './components/ListUser'
+  // import FormAddUser from './FormAddUser'
+  import ListUser from './ListUser'
 
   export default {
     components: {
-      FormAddUser,
+      // FormAddUser,
       ListUser
     }
   }

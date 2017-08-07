@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <p>------------------------------------------</p>
+  <p style="text-align:center">------------------------------------------</p>
   <UserManagerment></UserManagerment>
   <div class="footer navbar navbar-default navbar-static-bottom">
     <p>A miniproject make by <a href="https://www.facebook.com/daohoang134" target="_blank">Hoang Dao</a></p>
@@ -53,14 +53,13 @@ export default {
 
 <style>
 .page-app {
-  text-align: center;
+ 
 }
 
 #app {
   /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
   /*-webkit-font-smoothing: antialiased;*/
   /*-moz-osx-font-smoothing: grayscale;*/
-  text-align: center;
   color: #2c3e50;
   /*margin-top: 60px;*/
   min-height: 600px;
