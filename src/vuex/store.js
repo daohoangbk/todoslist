@@ -5,7 +5,23 @@ Vue.use(Vuex)
 const state = {
   todosList: [{text: 'first', done: false}, {text: 'second', done: true}],
   view: 'all',
-  inputText: ''
+  inputText: '',
+  listUsers: [{
+    name: 'Hoang',
+    address: 'Ha Noi',
+    phone: '0123'
+  },
+  { name: 'Dao',
+    address: 'Bac Ninh',
+    phone: '0123'
+  },
+  { name: 'Cong',
+    address: 'Shanghai',
+    phone: '0123'
+  }],
+  inputUsername: '',
+  inputAddress: '',
+  inputPhone: ''
 }
 
 const mutations = {
@@ -51,7 +67,11 @@ const actions = {
 const getters = {
   inputText: (state) => state.inputText,
   todosList: (state) => state.todosList,
-  view: (state) => state.view
+  view: (state) => state.view,
+  listUsers: (state) => state.listUsers,
+  inputUsername: (state) => state.inputUsername,
+  inputAddress: (state) => state.inputAddress,
+  inputPhone: (state) => state.inputPhone
 }
 
 export default new Vuex.Store({

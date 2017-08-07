@@ -23,33 +23,44 @@
       <div class="col-md-3 col-xs-3"></div>
     </div>
   </div>
+
+  <p>------------------------------------------</p>
+  <UserManagerment></UserManagerment>
   <div class="footer navbar navbar-default navbar-static-bottom">
     <p>A miniproject make by <a href="https://www.facebook.com/daohoang134" target="_blank">Hoang Dao</a></p>
   </div>
 </div>
+
+
 </template>
 
 <script>
 import FormAddItem from './components/FormAddItem'
 import ListItem from './components/ListItem'
 import ViewOptions from './components/ViewOptions'
+import UserManagerment from './components/UserManagerment'
 
 export default {
   name: 'app',
   components: {
     FormAddItem,
     ListItem,
-    ViewOptions
+    ViewOptions,
+    UserManagerment
   }
 }
 </script>
 
 <style>
+.page-app {
+  text-align: center;
+}
+
 #app {
   /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
   /*-webkit-font-smoothing: antialiased;*/
   /*-moz-osx-font-smoothing: grayscale;*/
-  /*text-align: center;*/
+  text-align: center;
   color: #2c3e50;
   /*margin-top: 60px;*/
   min-height: 600px;
