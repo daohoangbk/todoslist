@@ -1,5 +1,5 @@
 <template>
-  <div class="row viewoptions">
+  <div class="row">
     <table class="table">
       <thead>
         <tr class="row">
@@ -14,7 +14,12 @@
           <td class="col-md-3 col-xs-3">{{user.name}}</td>
           <td class="col-md-3 col-xs-3">{{user.address}}</td>
           <td class="col-md-3 col-xs-3">{{user.phone}}</td>
-          <td class="col-md-3 col-xs-3"></td>
+          <td class="col-md-3 col-xs-3">
+            <div v-if="!user.deleted">
+              <button type="submit" class="btn btn-primary">Edit</button>
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -22,8 +27,6 @@
 </template>
 
 <script>
-  import FormAddUser from './components/FormAddUser'
-  import ListUser from './components/ListUser'
   import { mapGetters } from 'vuex'
   export default {
     computed: {

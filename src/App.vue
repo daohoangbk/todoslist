@@ -13,7 +13,7 @@
   </div>
   <div id="app">
     <b><h1>TodosList Example</h1></b>
-    <div class="container row">
+    <div class="row">
       <div class="col-md-3 col-xs-3"></div>
       <div class="col-md-6 col-xs-6">
         <FormAddItem></FormAddItem>
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <p>------------------------------------------</p>
+  <p style="text-align:center">------------------------------------------</p>
   <UserManagerment></UserManagerment>
   <div class="footer navbar navbar-default navbar-static-bottom">
     <p>A miniproject make by <a href="https://www.facebook.com/daohoang134" target="_blank">Hoang Dao</a></p>
@@ -53,14 +53,14 @@ export default {
 
 <style>
 .page-app {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 #app {
   /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
   /*-webkit-font-smoothing: antialiased;*/
   /*-moz-osx-font-smoothing: grayscale;*/
-  text-align: center;
+  /*text-align: center;*/
   color: #2c3e50;
   /*margin-top: 60px;*/
   min-height: 600px;
