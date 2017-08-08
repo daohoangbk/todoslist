@@ -9,19 +9,23 @@ const state = {
   listUsers: [{
     name: 'Hoang',
     address: 'Ha Noi',
-    phone: '0123'
+    phone: '0123',
+    deleted: false
   },
   { name: 'Dao',
     address: 'Bac Ninh',
-    phone: '0123'
+    phone: '0123',
+    deleted: false
   },
   { name: 'Cong',
     address: 'Shanghai',
-    phone: '0123'
+    phone: '0123',
+    deleted: true
   }],
-  inputUsername: '',
-  inputAddress: '',
-  inputPhone: ''
+  inputUsername: '1',
+  inputAddress: '2',
+  inputPhone: '3',
+  flag: 'add'
 }
 
 const mutations = {
@@ -44,6 +48,18 @@ const mutations = {
   },
   CHANGE_VIEW (state, view) {
     state.view = view
+  },
+  CHANGE_NAME (state, text) {
+    state.inputUsername = text
+  },
+  CHANGE_ADDRESS (state, text) {
+    state.inputAddress = text
+  },
+  CHANGE_PHONE (state, text) {
+    state.inputPhone = text
+  },
+  ADD_USER (state, user) {
+    state.listUsers.push(user)
   }
 }
 
@@ -62,6 +78,15 @@ const actions = {
   },
   changeView ({commit}, {view}) {
     commit('CHANGE_VIEW', view)
+  },
+  changeName ({commit}, {text}) {
+    commit('CHANGE_NAME', text)
+  },
+  changeAddress ({commit}, {text}) {
+    commit('CHANGE_ADDRESS', text)
+  },
+  changePhone ({commit}, {text}) {
+    commit('CHANGE_PHONE', text)
   }
 }
 const getters = {
@@ -71,7 +96,8 @@ const getters = {
   listUsers: (state) => state.listUsers,
   inputUsername: (state) => state.inputUsername,
   inputAddress: (state) => state.inputAddress,
-  inputPhone: (state) => state.inputPhone
+  inputPhone: (state) => state.inputPhone,
+  flag: (state) => state.flag
 }
 
 export default new Vuex.Store({

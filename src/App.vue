@@ -13,7 +13,7 @@
   </div>
   <div id="app">
     <b><h1>TodosList Example</h1></b>
-    <div class="container row">
+    <div class="row">
       <div class="col-md-3 col-xs-3"></div>
       <div class="col-md-6 col-xs-6">
         <FormAddItem></FormAddItem>
@@ -53,7 +53,6 @@ export default {
 
 <style>
 .page-app {
- 
 }
 
 #app {

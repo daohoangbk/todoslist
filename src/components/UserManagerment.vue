@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  // import FormAddUser from './FormAddUser'
+  import FormAddUser from './FormAddUser'
   import ListUser from './ListUser'
 
   export default {
