@@ -22,10 +22,11 @@ const state = {
     phone: '0123',
     deleted: true
   }],
-  inputUsername: '1',
-  inputAddress: '2',
-  inputPhone: '3',
-  flag: 'add'
+  inputUsername: 'name',
+  inputAddress: 'addr',
+  inputPhone: 'phone',
+  flag: 'add',
+  indexUser: -1
 }
 
 const mutations = {
@@ -60,6 +61,34 @@ const mutations = {
   },
   ADD_USER (state, user) {
     state.listUsers.push(user)
+  },
+  RESET_INPUT (state) {
+    state.inputUsername = ''
+    state.inputAddress = ''
+    state.inputPhone = ''
+  },
+  DELETE_USER (state, index) {
+    state.listUsers[index].deleted = !state.listUsers[index].deleted
+  },
+  CHANGE_FLAG_EDIT (state, index) {
+    if (state.flag !== 'edit') {
+      state.flag = 'edit'
+    }
+    state.indexUser = index
+  },
+  CHANGE_FLAG_ADD (state) {
+    if (state.flag !== 'add') {
+      state.flag = 'add'
+      state.indexUser = -1
+    }
+  },
+  EDIT_USER (state, user) {
+    // console.log(typeof (state.listUsers))
+    // console.log(state.listUsers[state.indexUser - 1])
+    state.listUsers[state.indexUser].name = user.name
+    state.listUsers[state.indexUser].address = user.address
+    state.listUsers[state.indexUser].phone = user.phone
+    // console.log(state.listUsers[state.indexUser])
   }
 }
 
@@ -87,6 +116,25 @@ const actions = {
   },
   changePhone ({commit}, {text}) {
     commit('CHANGE_PHONE', text)
+  },
+  addUser ({commit}, user) {
+    commit('ADD_USER', user)
+  },
+  resetInput ({commit}) {
+    commit('RESET_INPUT')
+  },
+  deleteUser ({commit}, {index}) {
+    commit('DELETE_USER', index)
+  },
+  changeFlagEdit ({commit}, {index}) {
+    commit('CHANGE_FLAG_EDIT', index)
+  },
+  changeFlagAdd ({commit}) {
+    commit('CHANGE_FLAG_ADD')
+  },
+  editUser ({commit}, {user}) {
+    // console.log(user)
+    commit('EDIT_USER', user)
   }
 }
 const getters = {
