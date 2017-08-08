@@ -1,6 +1,6 @@
 <template>
   <div class="row viewoptions">
-    <FormAddUser></FormAddUser>
+    
     <ListUser></ListUser>
   </div>
 </template>
@@ -11,7 +11,7 @@
 
   export default {
     components: {
-      FormAddUser,
+      // FormAddUser,
       ListUser
     }
   }

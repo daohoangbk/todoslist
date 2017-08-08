@@ -1,7 +1,7 @@
 <template>
   <div>
     <form class="form-horizontal">
-      <div class="form-group">
+      <div class="form-group" @submit.prevent="">
         <label class="col-md-2 col-xs-2 control-label">Name</label>
         <div class="col-md-10 col-xs-10">
           <input type="text" class="form-control" placeholder="Name"
