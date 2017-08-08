@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="form-horizontal">
+    <form class="form-horizontal test">
       <div class="form-group" @submit.prevent="">
         <label class="col-md-2 col-xs-2 control-label">Name</label>
         <div class="col-md-10 col-xs-10">
