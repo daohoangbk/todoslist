@@ -71,13 +71,17 @@
         })
       },
       addUser: function () {
-        this.$store.dispatch('addUser', {
-          name: this.inputUsername,
-          address: this.inputAddress,
-          phone: this.inputPhone,
-          deleted: false
-        })
-        this.resetInput()
+        if (this.inputUsername === '' || this.inputUsername === null) {
+          alert('Empty username!')
+        } else {
+          this.$store.dispatch('addUser', {
+            name: this.inputUsername,
+            address: this.inputAddress,
+            phone: this.inputPhone,
+            deleted: false
+          })
+          this.resetInput()
+        }
       },
       cancelEdit: function () {
         this.changeFlagAdd()
@@ -103,6 +107,6 @@ form {
   margin: 20px;
 }
 .formadduser {
-  padding: 300px;
+  padding: 30px;
 }
 </style>

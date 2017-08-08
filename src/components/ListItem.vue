@@ -63,3 +63,9 @@
     }
   }
 </script>
+
+<style>
+.done {
+  text-decoration: line-through;
+}
+</style>
