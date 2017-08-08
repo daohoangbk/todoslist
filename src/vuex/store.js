@@ -57,6 +57,9 @@ const mutations = {
   },
   CHANGE_PHONE (state, text) {
     state.inputPhone = text
+  },
+  ADD_USER (state, user) {
+    state.listUsers.push(user)
   }
 }
 
