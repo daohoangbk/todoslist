@@ -14,17 +14,18 @@
   <div id="app">
     <b><h1>TodosList Example</h1></b>
     <div class="row">
-      <div class="col-md-3 col-xs-3"></div>
-      <div class="col-md-6 col-xs-6">
+      <div class="col-md-3 col-xs-2"></div>
+      <div class="col-md-6 col-xs-8">
         <FormAddItem></FormAddItem>
         <ListItemComponent></ListItemComponent>
       </div>
-      <div class="col-md-3 col-xs-3"></div>
+      <div class="col-md-3 col-xs-2"></div>
     </div>
   </div>
 
   <p style="text-align:center">------------------------------------------</p>
   <UserManagerment></UserManagerment>
+  <ListItemComponent></ListItemComponent>
   <div class="footer navbar navbar-default navbar-static-bottom">
     <p>A miniproject make by <a href="https://www.facebook.com/daohoang134" target="_blank">Hoang Dao</a></p>
   </div>

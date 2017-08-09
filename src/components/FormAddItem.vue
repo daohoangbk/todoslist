@@ -1,10 +1,15 @@
 <template>
-<div class="formadditem">
-  <div class="form-group">
-    <input class="form-control" :value="inputText" @input="changeText" placeholder="Insert task-name..." />
+  <div>
+    <div class="formadditem form-inline">
+      <div class="form-group">
+        <input class="form-control" :value="inputText" @input="changeText" placeholder="Insert task name..." />
+        <select class="form-control" v-model="userId">
+          <option v-for="(user, index) in listUsers" :value="user.id">{{user.name}}</option>
+        </select>
+      </div><br>
+      <button class="btn btn-primary btn-lg btn-add" @click="addItem">Add</button>
+    </div>
   </div>
-  <button class="btn btn-primary btn-lg btn-add" @click="addItem">Add</button>
-</div>
 </template>
 
 <script>
@@ -14,17 +19,30 @@ import {
 } from 'vuex'
 
 export default {
+  data: function () {
+    return {
+      userId: -1
+    }
+  },
   computed: {
-    ...mapGetters(['inputText'])
+    ...mapGetters([
+      'inputText',
+      'listUsers'
+    ])
   },
   methods: {
     ...mapActions([
-      'addItem'
     ]),
     changeText: function (e) {
       this.$store.dispatch('changeText', {
         text: e.target.value
       })
+    },
+    addItem: function () {
+      this.$store.dispatch('addItem', {
+        id: this.userId
+      })
+      this.userId = -1
     }
   }
 }
@@ -33,6 +51,7 @@ export default {
 <style>
 input {
   margin-right: 10px;
+  width: 100%;
 }
 .btn-add {
   width: 120px;
@@ -42,6 +61,10 @@ input {
 .formadditem {
   text-align: center;
   margin: 20px;
+}
+.form-group {
+  width: 100%;
+  padding: 0px;
 }
 
 </style>
