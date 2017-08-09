@@ -22,9 +22,9 @@ const state = {
     phone: '0123',
     deleted: true
   }],
-  inputUsername: 'name',
-  inputAddress: 'addr',
-  inputPhone: 'phone',
+  inputUsername: '',
+  inputAddress: '',
+  inputPhone: '',
   flag: 'add',
   indexUser: -1
 }
@@ -83,12 +83,12 @@ const mutations = {
     }
   },
   EDIT_USER (state, user) {
-    // console.log(typeof (state.listUsers))
-    // console.log(state.listUsers[state.indexUser - 1])
     state.listUsers[state.indexUser].name = user.name
     state.listUsers[state.indexUser].address = user.address
     state.listUsers[state.indexUser].phone = user.phone
-    // console.log(state.listUsers[state.indexUser])
+  },
+  UNDO_DELETE (state, index) {
+    state.listUsers[index].deleted = false
   }
 }
 
@@ -133,8 +133,10 @@ const actions = {
     commit('CHANGE_FLAG_ADD')
   },
   editUser ({commit}, {user}) {
-    // console.log(user)
     commit('EDIT_USER', user)
+  },
+  undoDelete ({commit}, {index}) {
+    commit('UNDO_DELETE', index)
   }
 }
 const getters = {

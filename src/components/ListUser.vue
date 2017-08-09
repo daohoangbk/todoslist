@@ -22,6 +22,9 @@
                 <button type="submit" class="btn btn-primary" @click="editUser($event, index, user)">Edit</button>
                 <button type="submit" class="btn btn-danger" @click="deleteUser($event, index)">Delete</button>
               </div>
+              <div v-else>
+                <button type="submit" class="btn btn-info" @click="undoDelete($event, index)">Undo</button>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -58,6 +61,11 @@
           text: user.phone
         })
         this.$store.dispatch('changeFlagEdit', {
+          index
+        })
+      },
+      undoDelete: function (event, index) {
+        this.$store.dispatch('undoDelete', {
           index
         })
       }
