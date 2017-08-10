@@ -41,7 +41,7 @@
             <td class="col-md-2 col-xs-2">{{user.phone}}</td>
             <td class="col-md-4 col-xs-4">
               <span v-if="!user.deleted">
-                <button class="btn btn-primary" @click="editUser($event, index, user)">Edit</button>
+                <button class="btn btn-primary" @click="editUser($event, user)">Edit</button>
                 <button class="btn btn-danger" @click="toggleDeleteUser($event, user.id)">Delete</button>
               </span>
               <span v-else>
@@ -124,7 +124,7 @@
           id
         })
       },
-      editUser: function (event, index, user) {
+      editUser: function (event, user) {
         this.$store.dispatch('changeName', {
           text: user.name
         })
@@ -135,7 +135,7 @@
           text: user.phone
         })
         this.$store.dispatch('changeFlagEdit', {
-          index
+          id: user.id
         })
       }
     },

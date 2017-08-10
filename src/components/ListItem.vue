@@ -133,39 +133,6 @@
           index
         })
       },
-      isShow: function (isTrue, id) {
-        if (this.userId === undefined) {
-          switch (this.view) {
-            case 'all': return true
-            case 'done': {
-              if (isTrue) return true
-              else return false
-            }
-            case 'uncompleted': {
-              if (isTrue) return false
-              else return true
-            }
-            default: return true
-          }
-        } else {
-          if (id === this.userId) {
-            switch (this.view) {
-              case 'all': return true
-              case 'done': {
-                if (isTrue) return true
-                else return false
-              }
-              case 'uncompleted': {
-                if (isTrue) return false
-                else return true
-              }
-              default: return true
-            }
-          } else {
-            return false
-          }
-        }
-      },
       filterListItem: function () {
         let list = this.todosList.slice()
         if (this.userId === undefined) {
@@ -176,7 +143,7 @@
           }
         } else {
           if (this.view === 'all') {
-            return lodash.filter({list, userId: this.userId})
+            return lodash.filter(list, {userId: this.userId})
           } else {
             return lodash.filter(list, {done: this.view === 'done', userId: this.userId})
           }

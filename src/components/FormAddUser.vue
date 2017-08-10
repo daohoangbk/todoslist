@@ -53,8 +53,7 @@
     methods: {
       ...mapActions([
         'resetInput',
-        'changeFlagAdd',
-        'resetInput'
+        'changeFlagAdd'
       ]),
       changeName: function (e) {
         this.$store.dispatch('changeName', {
