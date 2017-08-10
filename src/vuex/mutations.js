@@ -39,14 +39,19 @@ const mutations = {
     state.inputAddress = ''
     state.inputPhone = ''
   },
-  DELETE_USER (state, index) {
-    state.listUsers[index].deleted = !state.listUsers[index].deleted
+  TOGGLE_DELETE_USER (state, id) {
+    for (let i = 0; i < state.listUsers.length; i++) {
+      if (state.listUsers[i].id === id) {
+        state.listUsers[i].deleted = !state.listUsers[i].deleted
+        break
+      }
+    }
   },
-  CHANGE_FLAG_EDIT (state, index) {
+  CHANGE_FLAG_EDIT (state, id) {
     if (state.flag !== 'edit') {
       state.flag = 'edit'
     }
-    state.indexUser = index
+    state.indexUser = id
   },
   CHANGE_FLAG_ADD (state) {
     if (state.flag !== 'add') {
@@ -58,9 +63,6 @@ const mutations = {
     state.listUsers[state.indexUser].name = user.name
     state.listUsers[state.indexUser].address = user.address
     state.listUsers[state.indexUser].phone = user.phone
-  },
-  UNDO_DELETE (state, index) {
-    state.listUsers[index].deleted = false
   },
   CHANGE_FLAG_EDIT_ITEM (state, index) {
     if (state.todosList[index].flagEdit === false) {

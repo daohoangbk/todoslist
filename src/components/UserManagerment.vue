@@ -15,7 +15,7 @@
         <ListUser class="col-md-8 col-xs-8"></ListUser>
         <div class="col-md-2 col-xs-2"></div>
       </div>
-  </main>
+    </main>
   </div>
 </template>
 
@@ -30,9 +30,3 @@
     }
   }
 </script>
-<style>
-h1 {
-  text-align: center;
-  margin-bottom: 50px;
-}
-</style>

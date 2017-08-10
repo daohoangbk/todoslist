@@ -25,7 +25,6 @@
 
   <p style="text-align:center">------------------------------------------</p>
   <UserManagerment></UserManagerment>
-  <ListItemComponent></ListItemComponent>
   <div class="footer navbar navbar-default navbar-static-bottom">
     <p>A miniproject make by <a href="https://www.facebook.com/daohoang134" target="_blank">Hoang Dao</a></p>
   </div>
@@ -49,64 +48,5 @@ export default {
 }
 </script>
 
-<style>
-.page-app {
-}
-
-#app {
-  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-  color: #2c3e50;
-  /*margin-top: 60px;*/
-  min-height: 600px;
-}
-
-h2 {
-  text-align: center;
-  color: #2E8B57;
-  margin-left: -100px;
-}
-
-h1 {
-  text-align: center;
-  color: #8B4726;
-}
-
-.title {
-  background-color: darkgray;
-  display: flex;
-}
-
-.title-text {
-  width: 100%;
-}
-
-.image {
-  width: 100px
-}
-
-input {
-  padding: 10px;
-}
-
-img {
-  width: 50px;
-  height: 50px;
-  margin: 8px 8px 8px 25px;
-}
-
-.footer {
-  margin-top: 20px;
-  padding: 8px;
-  width: 100%;
-  height: 20px;
-  text-align: center;
-  background-color: #B5B5B5;
-}
-.row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
+<style src="./css/app.css">
 </style>

@@ -13,7 +13,7 @@ const state = {
       text: 'second',
       userId: '1',
       done: true,
-      flagEdit: true,
+      flagEdit: false,
       inputTextChange: '',
       inputIdChange: ''
     }

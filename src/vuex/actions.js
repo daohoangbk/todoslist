@@ -29,20 +29,17 @@ const actions = {
   resetInput ({commit}) {
     commit('RESET_INPUT')
   },
-  deleteUser ({commit}, {index}) {
-    commit('DELETE_USER', index)
+  toggleDeleteUser ({commit}, {id}) {
+    commit('TOGGLE_DELETE_USER', id)
   },
-  changeFlagEdit ({commit}, {index}) {
-    commit('CHANGE_FLAG_EDIT', index)
+  changeFlagEdit ({commit}, {id}) {
+    commit('CHANGE_FLAG_EDIT', id)
   },
   changeFlagAdd ({commit}) {
     commit('CHANGE_FLAG_ADD')
   },
   editUser ({commit}, {user}) {
     commit('EDIT_USER', user)
-  },
-  undoDelete ({commit}, {index}) {
-    commit('UNDO_DELETE', index)
   },
   changeFlagEditItem ({commit}, {index}) {
     commit('CHANGE_FLAG_EDIT_ITEM', index)

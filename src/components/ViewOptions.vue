@@ -1,5 +1,5 @@
 <template>
-  <div class="row viewoptions">
+  <div class="row">
     <button class="btn-view btn col-md-3 col-xs-3" @click="changeView($event, 'all')">All</button>
     <div class="col-md-1 col-xs-1"></div>
     <button class="btn-view btn btn-success col-md-3 col-xs-3" @click="changeView($event, 'done')">Done</button>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ListItem></ListItem>
+    <ListItem :userId="userId"></ListItem>
     <ViewOptions></ViewOptions>
   </div>
 </template>
@@ -9,6 +9,9 @@
   import ViewOptions from './ViewOptions'
   import ListItem from './ListItem'
   export default {
+    props: [
+      'userId'
+    ],
     components: {
       ViewOptions,
       ListItem

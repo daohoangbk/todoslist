@@ -1,5 +1,5 @@
 <template>
-  <div class="formadduser">
+  <div class="form-add-user">
     <form class="form-horizontal" @submit.prevent="">
       <div class="form-group">
         <label class="col-md-2 col-xs-2 control-label">Name</label>
@@ -105,11 +105,3 @@
     }
   }
 </script>
-<style>
-form {
-  margin: 20px;
-}
-.formadduser {
-  padding: 30px;
-}
-</style>
