@@ -39,29 +39,38 @@
         </td>
       </tr>
     </tbody>
+
   </table>
   <h3 v-else>The Todo List is empty!!</h3>
+  <ViewOptions :view="view" @changeView="changeView"></ViewOptions>
 </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import ViewOptions from './ViewOptions'
 
   var lodash = require('lodash')
 
   export default {
+    data: function () {
+      return {
+        view: 'all'
+      }
+    },
     props: [
       'userId'
     ],
     computed: {
       ...mapGetters([
         'todosList',
-        'view',
         'listUsers'
       ])
-
     },
     methods: {
+      changeView: function (view) {
+        this.view = view
+      },
       cancelChangeItem: function (event, item) {
         this.$store.dispatch('changeFlagSaveItem', {
           id: item.id
@@ -149,6 +158,9 @@
           }
         }
       }
+    },
+    components: {
+      ViewOptions
     }
   }
 </script>

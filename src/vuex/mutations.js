@@ -32,9 +32,6 @@ const mutations = {
       }
     }
   },
-  CHANGE_VIEW (state, view) {
-    state.view = view
-  },
   CHANGE_NAME (state, text) {
     state.inputUsername = text
   },

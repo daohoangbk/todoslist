@@ -22,7 +22,6 @@ const state = {
       inputIdChange: ''
     }
   ],
-  view: 'all',
   inputText: '',
   listUsers: [{
     id: '0',

@@ -11,9 +11,6 @@ const actions = {
   changeDoneItem ({commit}, {id}) {
     commit('CHANGE_DONE_ITEM', id)
   },
-  changeView ({commit}, {view}) {
-    commit('CHANGE_VIEW', view)
-  },
   changeName ({commit}, {text}) {
     commit('CHANGE_NAME', text)
   },

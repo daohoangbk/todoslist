@@ -17,7 +17,7 @@
       <div class="col-md-3 col-xs-2"></div>
       <div class="col-md-6 col-xs-8">
         <FormAddItem></FormAddItem>
-        <ListItemComponent></ListItemComponent>
+        <ListItem></ListItem>
       </div>
       <div class="col-md-3 col-xs-2"></div>
     </div>
@@ -35,14 +35,14 @@
 
 <script>
 import FormAddItem from './components/FormAddItem'
-import ListItemComponent from './components/ListItemComponent'
+import ListItem from './components/ListItem'
 import UserManagerment from './components/UserManagerment'
 
 export default {
   name: 'app',
   components: {
     FormAddItem,
-    ListItemComponent,
+    ListItem,
     UserManagerment
   }
 }

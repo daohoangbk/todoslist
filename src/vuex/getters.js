@@ -1,7 +1,6 @@
 const getters = {
   inputText: (state) => state.inputText,
   todosList: (state) => state.todosList,
-  view: (state) => state.view,
   listUsers: (state) => state.listUsers,
   inputUsername: (state) => state.inputUsername,
   inputAddress: (state) => state.inputAddress,

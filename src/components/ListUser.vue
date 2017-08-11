@@ -54,13 +54,13 @@
       </table>
     </div>
     <h4>Task of User</h4>
-    <ListItemComponent :userId="userId"></ListItemComponent>
+    <ListItem :userId="userId"></ListItem>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
-  import ListItemComponent from './ListItemComponent'
+  import ListItem from './ListItem'
 
   var lodash = require('lodash')
 
@@ -140,7 +140,7 @@
       }
     },
     components: {
-      ListItemComponent
+      ListItem
     }
   }
 </script>
