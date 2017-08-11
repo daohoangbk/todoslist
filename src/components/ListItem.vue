@@ -144,19 +144,21 @@
       },
       filterListItem: function () {
         let list = this.todosList.slice()
+        let returnValue = []
         if (this.userId === undefined) {
           if (this.view === 'all') {
-            return list
+            returnValue = list
           } else {
-            return lodash.filter(list, {done: (this.view === 'done')})
+            returnValue = lodash.filter(list, {done: (this.view === 'done')})
           }
         } else {
           if (this.view === 'all') {
-            return lodash.filter(list, {userId: this.userId})
+            returnValue = lodash.filter(list, {userId: this.userId})
           } else {
-            return lodash.filter(list, {done: this.view === 'done', userId: this.userId})
+            returnValue = lodash.filter(list, {done: this.view === 'done', userId: this.userId})
           }
         }
+        return returnValue
       }
     },
     components: {

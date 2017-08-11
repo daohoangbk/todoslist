@@ -4,7 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import store from './vuex/store'
 import Vuex from 'vuex'
-// import './css/app.css'
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
