@@ -11,31 +11,31 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(item, index) in filterListItem()" class="row form-group">
+      <tr v-for="item in filterListItem()" class="row form-group">
         <td v-if="!item.flagEdit" v-bind:class="item.done ? 'done' : ''" class="col-md-4 col-xs-4">{{item.text}}</td>
-        <td v-else class="col-md-4 col-xs-4"><input type="text" :value="item.text" @input="changeInputText($event, index)" class="form-control"/></td>
+        <td v-else class="col-md-4 col-xs-4"><input type="text" :value="item.text" @input="changeInputText($event, item.id)" class="form-control"/></td>
 
         <td v-if="!item.flagEdit" class="col-md-3 col-xs-3">{{getUserNameById(item.userId)}}</td>
         <td v-else class="col-md-3 col-xs-3">
-          <select class="form-control" @change="changeInputId($event, index)" value="item.userId">
+          <select class="form-control" @change="changeInputId($event, item.id)" value="item.userId">
             <option>empty</option>
-            <option v-for="(user, index) in listUsers" :value="user.id" v-if="item.userId === user.id" selected="selected">{{user.name}}</option>
+            <option v-for="user in listUsers" :value="user.id" v-if="item.userId === user.id" selected="selected">{{user.name}}</option>
             <option :value="user.id" v-else>{{user.name}}</option>
           </select>
         </td>
 
-        <td v-if="!item.done" class="col-md-2 col-xs-2"><button class="btn btn-success btn-sm" @click="changeDoneItem($event, index)"><i class="glyphicon glyphicon-ok"></i></button></td>
-        <td v-else class="col-md-2 col-xs-2"><button class="btn btn-warning btn-sm" @click="changeDoneItem($event, index)"><i class="glyphicon glyphicon-remove"></i></button></td>
+        <td v-if="!item.done" class="col-md-2 col-xs-2"><button class="btn btn-success btn-sm" @click="changeDoneItem($event, item.id)"><i class="glyphicon glyphicon-ok"></i></button></td>
+        <td v-else class="col-md-2 col-xs-2"><button class="btn btn-warning btn-sm" @click="changeDoneItem($event, item.id)"><i class="glyphicon glyphicon-remove"></i></button></td>
 
         <td v-if="userId === undefined" class="col-md-2 col-xs-2">
-          <button v-if="!item.flagEdit" class="btn btn-info btn-sm" @click="changeFlagEditItem($event, index)"><i class="icons glyphicon glyphicon-edit"></i></button>
+          <button v-if="!item.flagEdit" class="btn btn-info btn-sm" @click="changeFlagEditItem($event, item)"><i class="icons glyphicon glyphicon-edit"></i></button>
           <span v-else>
-            <button class="btn btn-success btn-sm" @click="changeFlagSaveItem($event, index)"><i class="icons glyphicon glyphicon-saved"></i></button>
-            <button class="btn btn-warning btn-sm" @click="cancelChangeItem($event, index)"><i class="icons glyphicon glyphicon-repeat"></i></button>
+            <button class="btn btn-success btn-sm" @click="changeFlagSaveItem($event, item.id)"><i class="icons glyphicon glyphicon-saved"></i></button>
+            <button class="btn btn-warning btn-sm" @click="cancelChangeItem($event, item)"><i class="icons glyphicon glyphicon-repeat"></i></button>
           </span>
         </td>
         <td v-if="userId === undefined" class="col-md-2 col-xs-2">
-          <button class="btn btn-danger btn-sm" @click="removeItem($event, index)"><i class="icons glyphicon glyphicon-trash"></i></button>
+          <button class="btn btn-danger btn-sm" @click="removeItem($event, item.id)"><i class="icons glyphicon glyphicon-trash"></i></button>
         </td>
       </tr>
     </tbody>
@@ -62,53 +62,53 @@
 
     },
     methods: {
-      cancelChangeItem: function (event, index) {
+      cancelChangeItem: function (event, item) {
         this.$store.dispatch('changeFlagSaveItem', {
-          index
+          id: item.id
         })
         this.$store.dispatch('editTextItem', {
-          index,
-          text: this.todosList[index].text
+          id: item.id,
+          text: item.text
         })
         this.$store.dispatch('editUserDoItem', {
-          index,
-          userId: this.todosList[index].userId
+          id: item.id,
+          userId: item.userId
         })
       },
-      changeInputId: function (event, index) {
+      changeInputId: function (event, id) {
         this.$store.dispatch('editUserDoItem', {
-          index,
+          id,
           userId: event.target.value
         })
       },
-      changeInputText: function (event, index) {
+      changeInputText: function (event, id) {
         this.$store.dispatch('editTextItem', {
-          index,
+          id,
           text: event.target.value
         })
       },
-      changeFlagEditItem: function (event, index) {
+      changeFlagEditItem: function (event, item) {
         this.$store.dispatch('changeFlagEditItem', {
-          index
+          id: item.id
         })
         this.$store.dispatch('editTextItem', {
-          index,
-          text: this.todosList[index].text
+          id: item.id,
+          text: item.text
         })
         this.$store.dispatch('editUserDoItem', {
-          index,
-          userId: this.todosList[index].userId
+          id: item.id,
+          userId: item.userId
         })
       },
-      changeFlagSaveItem: function (event, index) {
+      changeFlagSaveItem: function (event, id) {
         this.$store.dispatch('changeFlagSaveItem', {
-          index
+          id
         })
         this.$store.dispatch('saveTextItem', {
-          index
+          id
         })
         this.$store.dispatch('saveUserDoItem', {
-          index
+          id
         })
       },
       getUserNameById: function (id) {
@@ -121,16 +121,16 @@
         })
         return name
       },
-      changeDoneItem: function (event, index) {
+      changeDoneItem: function (event, id) {
         event.preventDefault()
         this.$store.dispatch('changeDoneItem', {
-          index: index
+          id
         })
       },
-      removeItem: function (event, index) {
+      removeItem: function (event, id) {
         event.preventDefault()
         this.$store.dispatch('removeItem', {
-          index
+          id
         })
       },
       filterListItem: function () {

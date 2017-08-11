@@ -47,7 +47,8 @@
         'inputAddress',
         'inputPhone',
         'flag',
-        'listUsers'
+        'listUsers',
+        'countUser'
       ])
     },
     methods: {
@@ -74,9 +75,8 @@
         if (this.inputUsername === '' || this.inputUsername === null) {
           alert('Empty username!')
         } else {
-          let id = this.listUsers.length
           this.$store.dispatch('addUser', {
-            id,
+            id: this.countUser,
             name: this.inputUsername,
             address: this.inputAddress,
             phone: this.inputPhone,

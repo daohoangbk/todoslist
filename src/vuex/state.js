@@ -1,7 +1,10 @@
 const state = {
   flag: 'add',
+  countItem: 2,
+  countUser: 3,
   todosList: [
     {
+      id: '0',
       text: 'first',
       userId: '0',
       done: false,
@@ -10,6 +13,7 @@ const state = {
       inputIdChange: ''
     },
     {
+      id: '1',
       text: 'second',
       userId: '1',
       done: true,

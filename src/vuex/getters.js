@@ -7,7 +7,8 @@ const getters = {
   inputAddress: (state) => state.inputAddress,
   inputPhone: (state) => state.inputPhone,
   flag: (state) => state.flag,
-  flagEditItem: (state) => state.flagEditItem
+  flagEditItem: (state) => state.flagEditItem,
+  countUser: (state) => state.countUser
 }
 
 export default getters

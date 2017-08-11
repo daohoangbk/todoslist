@@ -2,6 +2,7 @@ const mutations = {
   ADD_ITEM (state, id) {
     let temp = state.inputText
     let item = {
+      id: state.countItem.toString(),
       text: temp,
       userId: id,
       done: false,
@@ -9,15 +10,27 @@ const mutations = {
     }
     state.inputText = ''
     state.todosList.push(item)
+    state.countItem++
+  },
+  REMOVE_ITEM (state, id) {
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === id) {
+        state.todosList.splice(i, 1)
+        state.countItem--
+        break
+      }
+    }
   },
   CHANGE_TEXT (state, text) {
     state.inputText = text
   },
-  CHANGE_DONE_ITEM (state, index) {
-    state.todosList[index].done = !state.todosList[index].done
-  },
-  REMOVE_ITEM (state, index) {
-    state.todosList.splice(index, 1)
+  CHANGE_DONE_ITEM (state, id) {
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === id) {
+        state.todosList[i].done = !state.todosList[i].done
+        break
+      }
+    }
   },
   CHANGE_VIEW (state, view) {
     state.view = view
@@ -33,6 +46,7 @@ const mutations = {
   },
   ADD_USER (state, user) {
     state.listUsers.push(user)
+    state.countUser++
   },
   RESET_INPUT (state) {
     state.inputUsername = ''
@@ -64,27 +78,57 @@ const mutations = {
     state.listUsers[state.indexUser].address = user.address
     state.listUsers[state.indexUser].phone = user.phone
   },
-  CHANGE_FLAG_EDIT_ITEM (state, index) {
-    if (state.todosList[index].flagEdit === false) {
-      state.todosList[index].flagEdit = true
+  CHANGE_FLAG_EDIT_ITEM (state, id) {
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === id) {
+        if (state.todosList[i].flagEdit === false) {
+          state.todosList[i].flagEdit = true
+        }
+        break
+      }
     }
   },
-  CHANGE_FLAG_SAVE_ITEM (state, index) {
-    if (state.todosList[index].flagEdit === true) {
-      state.todosList[index].flagEdit = false
+  CHANGE_FLAG_SAVE_ITEM (state, id) {
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === id) {
+        if (state.todosList[i].flagEdit === true) {
+          state.todosList[i].flagEdit = false
+        }
+        break
+      }
     }
   },
   EDIT_TEXT_ITEM (state, obj) {
-    state.todosList[obj.index].inputTextChange = obj.text
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === obj.id) {
+        state.todosList[i].inputTextChange = obj.text
+        break
+      }
+    }
   },
   EDIT_USER_DO_ITEM (state, obj) {
-    state.todosList[obj.index].inputIdChange = obj.userId
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === obj.id) {
+        state.todosList[i].inputIdChange = obj.userId
+        break
+      }
+    }
   },
-  SAVE_TEXT_ITEM (state, index) {
-    state.todosList[index].text = state.todosList[index].inputTextChange
+  SAVE_TEXT_ITEM (state, id) {
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === id) {
+        state.todosList[i].text = state.todosList[i].inputTextChange
+        break
+      }
+    }
   },
-  SAVE_USER_DO_ITEM (state, index) {
-    state.todosList[index].userId = state.todosList[index].inputIdChange
+  SAVE_USER_DO_ITEM (state, id) {
+    for (let i = 0; i < state.todosList.length; i++) {
+      if (state.todosList[i].id === id) {
+        state.todosList[i].userId = state.todosList[i].inputIdChange
+        break
+      }
+    }
   }
 }
 

@@ -2,14 +2,14 @@ const actions = {
   addItem ({commit}, {id}) {
     commit('ADD_ITEM', id)
   },
+  removeItem ({commit}, {id}) {
+    commit('REMOVE_ITEM', id)
+  },
   changeText ({commit}, {text}) {
     commit('CHANGE_TEXT', text)
   },
-  changeDoneItem ({commit}, {index}) {
-    commit('CHANGE_DONE_ITEM', index)
-  },
-  removeItem ({commit}, {index}) {
-    commit('REMOVE_ITEM', index)
+  changeDoneItem ({commit}, {id}) {
+    commit('CHANGE_DONE_ITEM', id)
   },
   changeView ({commit}, {view}) {
     commit('CHANGE_VIEW', view)
@@ -41,11 +41,11 @@ const actions = {
   editUser ({commit}, {user}) {
     commit('EDIT_USER', user)
   },
-  changeFlagEditItem ({commit}, {index}) {
-    commit('CHANGE_FLAG_EDIT_ITEM', index)
+  changeFlagEditItem ({commit}, {id}) {
+    commit('CHANGE_FLAG_EDIT_ITEM', id)
   },
-  changeFlagSaveItem ({commit}, {index}) {
-    commit('CHANGE_FLAG_SAVE_ITEM', index)
+  changeFlagSaveItem ({commit}, {id}) {
+    commit('CHANGE_FLAG_SAVE_ITEM', id)
   },
   editTextItem ({commit}, obj) {
     commit('EDIT_TEXT_ITEM', obj)
@@ -53,11 +53,11 @@ const actions = {
   editUserDoItem ({commit}, obj) {
     commit('EDIT_USER_DO_ITEM', obj)
   },
-  saveTextItem ({commit}, {index}) {
-    commit('SAVE_TEXT_ITEM', index)
+  saveTextItem ({commit}, {id}) {
+    commit('SAVE_TEXT_ITEM', id)
   },
-  saveUserDoItem ({commit}, {index}) {
-    commit('SAVE_USER_DO_ITEM', index)
+  saveUserDoItem ({commit}, {id}) {
+    commit('SAVE_USER_DO_ITEM', id)
   }
 }
 
