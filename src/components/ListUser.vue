@@ -88,30 +88,34 @@
       },
       localListUser: function () {
         let list = this.listUsers.slice()
+        let returnValue = []
         switch (this.keySort) {
           case 'name': {
             if (!this.reverseSort) {
-              return lodash.sortBy(list, 'name')
+              returnValue = lodash.sortBy(list, 'name')
             } else {
-              return lodash.sortBy(list, 'name').reverse()
+              returnValue = lodash.sortBy(list, 'name').reverse()
             }
+            break
           }
           case 'address': {
             if (!this.reverseSort) {
-              return lodash.sortBy(list, 'address')
+              returnValue = lodash.sortBy(list, 'address')
             } else {
-              return lodash.sortBy(list, 'address').reverse()
+              returnValue = lodash.sortBy(list, 'address').reverse()
             }
+            break
           }
           case 'phone': {
             if (!this.reverseSort) {
-              return lodash.sortBy(list, 'phone')
+              returnValue = lodash.sortBy(list, 'phone')
             } else {
-              return lodash.sortBy(list, 'phone').reverse()
+              returnValue = lodash.sortBy(list, 'phone').reverse()
             }
+            break
           }
         }
-        return lodash.sortBy(list, 'name')
+        return returnValue
       },
       filterUser: function (user) {
         return user.name.toLowerCase().includes(this.nameSearch.toLowerCase()) && user.address.toLowerCase().includes(this.addressSearch.toLowerCase()) && user.phone.toLowerCase().includes(this.phoneSearch.toLowerCase())
