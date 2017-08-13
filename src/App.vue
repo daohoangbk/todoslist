@@ -1,5 +1,8 @@
 <template>
 <div class="page-app">
+  <router-link to="/test">go to /test</router-link>
+  <router-link to="/">go to /</router-link>
+  <router-view></router-view>
   <div class="header">
     <div class="title row">
       <div class="col-md-2 col-xs-2 image">
@@ -11,7 +14,7 @@
     </div>
 
   </div>
-  <div id="app">
+  <div id="">
     <b><h1>TodosList Example</h1></b>
     <div class="row">
       <div class="col-md-3 col-xs-2"></div>
