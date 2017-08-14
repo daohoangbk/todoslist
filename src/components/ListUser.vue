@@ -32,7 +32,11 @@
             <th class="col-md-3 col-xs-3"><input v-model="nameSearch" type="text" class="form-control" placeholder="search..."></th>
             <th class="col-md-2 col-xs-2"><input v-model="addressSearch" type="text" class="form-control" placeholder="search..."></th>
             <th class="col-md-2 col-xs-2"><input v-model="phoneSearch" type="" class="form-control" placeholder="search..."></th>
-            <th class="col-md-4 col-xs-4"></th>
+            <th class="col-md-4 col-xs-4">
+              <router-link to="/form-add-user">
+                <button class="btn btn-primary">Add new user</button>
+              </router-link>
+            </th>
           </tr>
           <tr v-for="(user, index) in localListUser()" class="row" v-if="filterUser(user)">
             <th class="col-md-1 col-xs-1">{{index + 1}}</th>
@@ -41,39 +45,51 @@
             <td class="col-md-2 col-xs-2">{{user.phone}}</td>
             <td class="col-md-4 col-xs-4">
               <span v-if="!user.deleted">
-                <button class="btn btn-primary" @click="editUser($event, user)">Edit</button>
-                <button class="btn btn-danger" @click="toggleDeleteUser($event, user.id)">Delete</button>
+                <router-link to="/form-edit-user">
+                  <button class="btn btn-primary" @click="editUser($event, user)">Edit</button>
+                </router-link>
+                <button class="btn btn-danger" @click="beforeDeleteUser(user)">Delete</button>
               </span>
               <span v-else>
-                <button class="btn btn-info" @click="toggleDeleteUser($event, user.id)">Undo</button>
+                <button class="btn btn-info" @click="toggleDeleteUser(user.id)">Undo</button>
               </span>
-              <button class="btn btn-info" @click="changeShowTaskUser($event, user.id)">Task</button>
+              <router-link :to="'/user/' + userId + '/task'">
+                <button class="btn btn-info" @click="changeShowTaskUser($event, user.id)">Task</button>
+              </router-link>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <h4>Task of User</h4>
-    <ListItem :userId="userId"></ListItem>
+    <Modal
+      :showModal="showModal"
+      :user="userDelete"
+      @toggleDeleteUser="toggleDeleteUser"
+      @cancelDeleteUser="cancelDeleteUser">
+    </Modal>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
   import ListItem from './ListItem'
+  import Modal from './Modal'
 
   var lodash = require('lodash')
 
   export default {
     data: function () {
       return {
+        userDelete: {},
         userId: -1,
         nameSearch: '',
         addressSearch: '',
         phoneSearch: '',
         sort: 'increate',
         reverseSort: false,
-        keySort: 'name'
+        keySort: 'name',
+        showModal: false,
+        agreeDelete: false
       }
     },
     computed: {
@@ -82,6 +98,14 @@
       ])
     },
     methods: {
+      cancelDeleteUser: function () {
+        this.showModal = false
+        this.userDelete = {}
+      },
+      beforeDeleteUser: function (user) {
+        this.showModal = true
+        this.userDelete = user
+      },
       changeReverseSort: function (keySort) {
         this.keySort = keySort
         this.reverseSort = !this.reverseSort
@@ -123,7 +147,8 @@
       changeShowTaskUser: function (event, id) {
         this.userId = id
       },
-      toggleDeleteUser: function (event, id) {
+      toggleDeleteUser: function (id) {
+        this.showModal = false
         this.$store.dispatch('toggleDeleteUser', {
           id
         })
@@ -144,7 +169,8 @@
       }
     },
     components: {
-      ListItem
+      ListItem,
+      Modal
     }
   }
 </script>

@@ -6,13 +6,13 @@ import store from './vuex/store'
 import Vuex from 'vuex'
 import Router from 'vue-router'
 import router from './vue-router/router'
-import { sync } from 'vuex-router-sync'
+
 Vue.config.productionTip = false
 
 Vue.use(Router)
 Vue.use(Vuex)
 /* eslint-disable no-new */
-sync(store, router)
+
 new Vue({
   router,
   store,

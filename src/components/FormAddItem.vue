@@ -4,7 +4,7 @@
     <div class="form-group">
       <input class="form-control" :value="inputText" @input="changeText" placeholder="Insert task name..." />
       <select class="form-control" v-model="userId">
-        <option>empty</option>
+        <option>Select user</option>
         <option v-for="user in listUsers" :value="user.id">{{user.name}}</option>
       </select>
     </div><br>
@@ -39,10 +39,14 @@ export default {
       })
     },
     addItem: function () {
-      this.$store.dispatch('addItem', {
-        id: this.userId
-      })
-      this.userId = -1
+      if (this.inputText !== '') {
+        this.$store.dispatch('addItem', {
+          id: this.userId
+        })
+        this.userId = -1
+      } else {
+        alert('Empty input!!')
+      }
     }
   }
 }
