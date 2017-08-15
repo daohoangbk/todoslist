@@ -16,7 +16,7 @@ const routes = [
   {path: '/user-management', component: UserManagement},
   {path: '/form-add-user', component: FormAddUser},
   {path: '/form-edit-user', component: FormAddUser},
-  {path: '/user/:userId/task', component: TaskOfUser, props: true}
+  {path: '/user/:userId/task', name: 'user-task', component: TaskOfUser, props: true}
 ]
 
 const router = new VueRouter({

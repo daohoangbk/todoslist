@@ -13,8 +13,7 @@
       </div>
     </header>
     <main>
-      <router-view>
-      </router-view>
+      <router-view></router-view>
     </main>
     <footer class="footer navbar navbar-default navbar-static-bottom">
       <p>A miniproject make by <a href="https://www.facebook.com/daohoang134" target="_blank">Hoang Dao</a></p>

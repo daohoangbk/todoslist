@@ -9,32 +9,32 @@
 </template>
 
 <script>
-    import ListItem from './ListItem'
-    import { mapGetters } from 'vuex'
-    export default {
-      components: {
-        ListItem
-      },
-      props: [
-        'userId'
-      ],
-      computed: {
-        ...mapGetters([
-          'listUsers'
-        ])
-      },
-      methods: {
-        getUserNameById: function (id) {
-          console.log(id)
-          let list = this.listUsers
-          let name = ''
-          list.forEach((user) => {
-            if (user.id === id) {
-              name = user.name
-            }
-          })
-          return name
-        }
+  import ListItem from './ListItem'
+  import { mapGetters } from 'vuex'
+  export default {
+    components: {
+      ListItem
+    },
+    props: [
+      'userId'
+    ],
+    computed: {
+      ...mapGetters([
+        'listUsers'
+      ])
+    },
+    methods: {
+      getUserNameById: function (id) {
+        console.log(id)
+        let list = this.listUsers
+        let name = ''
+        list.forEach((user) => {
+          if (user.id === id) {
+            name = user.name
+          }
+        })
+        return name
       }
     }
+  }
 </script>

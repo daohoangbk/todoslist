@@ -53,7 +53,7 @@
               <span v-else>
                 <button class="btn btn-info" @click="toggleDeleteUser(user.id)">Undo</button>
               </span>
-              <router-link :to="'/user/' + userId + '/task'">
+              <router-link :to="{ name: 'user-task', params: { userId: user.id}}">
                 <button class="btn btn-info" @click="changeShowTaskUser($event, user.id)">Task</button>
               </router-link>
             </td>
