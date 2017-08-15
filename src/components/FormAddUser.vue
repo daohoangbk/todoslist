@@ -30,7 +30,9 @@
           <button type="submit" class="btn btn-primary" @click="addUser">Add</button>
         </div>
         <div class="col-sm-4" v-if="flag === 'edit'">
-          <button class="btn btn-warning" @click="cancelEdit">Cancel</button>
+          <router-link to="/user-management">
+            <button class="btn btn-warning" @click="cancelEdit">Cancel</button>
+          </router-link>
         </div>
       </div>
     </form>
@@ -83,6 +85,7 @@
             deleted: false
           })
           this.resetInput()
+          this.$router.push({path: '/user-management'})
         }
       },
       cancelEdit: function () {
@@ -90,16 +93,21 @@
         this.resetInput()
       },
       saveEditUser: function () {
-        this.$store.dispatch('editUser', {
-          user: {
-            name: this.inputUsername,
-            address: this.inputAddress,
-            phone: this.inputPhone,
-            deleted: false
-          }
-        })
-        this.changeFlagAdd()
-        this.resetInput()
+        if (this.inputUsername === '' || this.inputUsername === null) {
+          alert('Empty username!')
+        } else {
+          this.$store.dispatch('editUser', {
+            user: {
+              name: this.inputUsername,
+              address: this.inputAddress,
+              phone: this.inputPhone,
+              deleted: false
+            }
+          })
+          this.changeFlagAdd()
+          this.resetInput()
+          this.$router.push({path: '/user-management'})
+        }
       }
     }
   }

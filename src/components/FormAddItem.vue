@@ -4,7 +4,7 @@
       <div class="form-group">
         <input class="form-control" :value="inputText" @input="changeText" placeholder="Insert task name..." />
         <select class="form-control" v-model="userId">
-          <option>empty</option>
+          <option>Select user</option>
           <option v-for="user in listUsers" :value="user.id">{{user.name}}</option>
         </select>
       </div><br>
@@ -14,37 +14,36 @@
 </template>
 
 <script>
-import {
-  mapGetters,
-  mapActions
-} from 'vuex'
+  import { mapGetters } from 'vuex'
 
-export default {
-  data: function () {
-    return {
-      userId: -1
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'inputText',
-      'listUsers'
-    ])
-  },
-  methods: {
-    ...mapActions([
-    ]),
-    changeText: function (e) {
-      this.$store.dispatch('changeText', {
-        text: e.target.value
-      })
+  export default {
+    data: function () {
+      return {
+        userId: -1
+      }
     },
-    addItem: function () {
-      this.$store.dispatch('addItem', {
-        id: this.userId
-      })
-      this.userId = -1
+    computed: {
+      ...mapGetters([
+        'inputText',
+        'listUsers'
+      ])
+    },
+    methods: {
+      changeText: function (e) {
+        this.$store.dispatch('changeText', {
+          text: e.target.value
+        })
+      },
+      addItem: function () {
+        if (this.inputText !== '') {
+          this.$store.dispatch('addItem', {
+            id: this.userId
+          })
+          this.userId = -1
+        } else {
+          alert('Empty input!!')
+        }
+      }
     }
   }
-}
 </script>
